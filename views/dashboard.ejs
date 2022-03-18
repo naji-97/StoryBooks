@@ -1,0 +1,42 @@
+<h6>Dashboard page</h6>
+<h3>Welcom <%= name %>
+</h3>
+<p>Here are your stories</p>
+<!--  -->
+<% if (stories !="") { %>
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% stories.forEach(story => { %>
+             
+            <tr>
+                
+                <td><a href="/stories/more/<%= story._id%> "><%= story.title %> </a></td>
+               <td> <%= moment(story.createdAt).format( 'MMM-DD-YYYY') %></td>
+                <td><span class="dash-status"><%= story.status %></span></td>
+                <td>
+                    <a href="/stories/edit/<%= story._id%> " class="btn btn-float">
+                        <i class="fas fa-edit"></i>
+                    </a>
+
+                    <a href="/stories/<%= story._id%> " class="btn btn red btn-float">
+                            <i class="fas fa-trash"></i>
+                    </a>
+    
+                    
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+<% }else{ %>
+<p>You have not created any stories</p>
+<%} %>
+

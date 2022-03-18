@@ -1,0 +1,37 @@
+<h1>Stories</h1>
+<div class="row">
+    <% if (stories !="") { %>
+        <% stories.forEach(story => { %>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-image">
+                        <% if (story.user ) { %>
+                        <a href="/stories/edit/<%= story._id %>" class="btn-floating halfway-fab blue"><i class="fas fa-edit fa-small"></i></a>
+
+                        <% } else { %>
+                            <a href="/stories/edit/<%= story.user._id %>"><i class="fas fa-edit"></i></a>
+                        <% } %>
+                    </div>
+                    <div class="card-content center-align">
+                        <h6 style="color: #26a69a;"> <%= story.title.substring(0, 40)+"..." %> </h6>
+                        <p><%- story.body.substring(0, 40)+"..."%> </p>
+                        
+                        <br>
+                        <div class="chip">
+                            <img src="<%= story.user.image %> " alt="">
+                            <a href="/stories/user/<%= story.user._id %>"> <%= story.user.displayName %></a>
+                        </div>
+                    </div>
+                    <div class="card-action center-align">
+                        <a href="/stories/more/<%= story._id %>" class="btn grey">Read More</a>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+
+    <% } else { %>
+
+        <p>No stories to display</p>
+    <% }%>
+</div>
+

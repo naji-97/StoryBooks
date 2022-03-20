@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { formatDate } = require('../helpers/ejs')
+// const { formatDate } = require('../helpers/ejs')
 const {ensureAuth, ensureGuest} =require('../middleware/auth')
 const Story = require('../models/Story')
 

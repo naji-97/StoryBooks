@@ -24,15 +24,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Methode override
-app.use(methodOveride(function (req, res) {
-  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
-    // look in urlencoded POST bodies and delete it
-    var method = req.body._methode
-    delete req.body._methode
-    return method
-  }
-}))
+
 
 if (process.env.NODE_ENV === "developement") {
   app.use(morgan("dev"));
@@ -41,14 +33,6 @@ if (process.env.NODE_ENV === "developement") {
 // Set static folder
 app.use(express.static(path.join(__dirname, "public")));
 
-// ejs helpers
-// const {
-//   formatDate,
-//   stripTags,
-//   truncate,
-//   editIcon,
-//   select,
-// } = require("./helpers/ejs");
 
 // Set Templating Engine
 app.use(expressLayouts);

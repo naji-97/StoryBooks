@@ -12,13 +12,14 @@
                             <a href="/stories/edit/<%= story.user._id %>"><i class="fas fa-edit"></i></a>
                         <% } %>
                     </div>
+                    
                     <div class="card-content center-align">
-                        <h6 style="color: #26a69a;"> <%= story.title.substring(0, 40)+"..." %> </h6>
-                        <p><%- story.body.substring(0, 40)+"..."%> </p>
+                        <h6 style="color: #26a69a;"> <%= story.title.substring(0, 24)%>... </h6>
+                        <p><%- story.body.substring(0, 60) %>... </p>
                         
                         <br>
                         <div class="chip">
-                            <img src="<%= story.user.image %> " alt="">
+                            <img class="btn-floating pulse" src="<%= story.user.image %> " alt="">
                             <a href="/stories/user/<%= story.user._id %>"> <%= story.user.displayName %></a>
                         </div>
                     </div>
